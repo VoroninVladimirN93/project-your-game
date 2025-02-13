@@ -67,6 +67,7 @@ export function AuthForm({ type }: Props): JSX.Element {
                     }),
                 )
                 unwrapResult(resultAction)
+                setLoading(false)
                 navigate("/")
             } catch (error) {
                 if (error instanceof Error) {
@@ -74,7 +75,7 @@ export function AuthForm({ type }: Props): JSX.Element {
                 } else {
                     console.log("An unexpected error")
                 }
-            }
+            } finally {setLoading(false)}
         }
         // РЕГИСТРАЦИЯ
         else {
@@ -95,6 +96,7 @@ export function AuthForm({ type }: Props): JSX.Element {
                     }),
                 )
                 unwrapResult(resultAction)
+                setLoading(false)
                 navigate("/")
             } catch (error) {
                 if (error instanceof Error) {
@@ -102,7 +104,7 @@ export function AuthForm({ type }: Props): JSX.Element {
                 } else {
                     console.log("An unexpected error")
                 }
-            }
+            }finally {setLoading(false)}
         }
     }
 
