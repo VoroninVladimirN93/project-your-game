@@ -6,17 +6,15 @@ class CardService {
   }
 
   static async getAll() {
-    return await Card.findAll({ include: [{ model: "Deck" }] });
+    return await Card.findAll({ include: [{ model: Deck }] });
   }
 
   static async getById(id) {
     return await Card.findOne({
       where: { id },
-      include: [{ model: "Deck" }],
+      include: [{ model: Deck }],
     });
   }
-
-
 }
 
 module.exports = CardService;

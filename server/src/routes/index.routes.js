@@ -6,7 +6,7 @@ const formatResponse = require("../utils/formatResponse");
 
 router
   .use("/auth", authRoutes)
-  .use("/deck", deckRoutes)
+  .use("/decks", deckRoutes)
   .use("/cards", cardRoutes);
 
 router.use("*", (req, res) => {
