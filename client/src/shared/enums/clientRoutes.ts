@@ -3,7 +3,6 @@ export enum CLIENT_ROUTES {
     REGISTRATION = "/signup",
     AUTHORIZATION = "/signin",
     LOGOUT = "/logout",
-    TASKS = "/tasks",
     NOTFOUND = "*",
     GAME = "/game",
 }

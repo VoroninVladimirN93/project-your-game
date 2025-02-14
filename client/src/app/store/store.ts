@@ -1,6 +1,5 @@
 // src/app/store/store.ts
 // Импортируем редьюсер для пользователя из файла user.ts
-import { taskReducer } from "@/entities/task"
 import { userReducer } from "@/entities/user"
 import { deckReducer } from "@/entities/deck/slice/slice"
 import { cardReducer } from "@/entities/card/slice/slice"
@@ -16,7 +15,6 @@ import { configureStore } from "@reduxjs/toolkit"
 const store = configureStore({
     reducer: {
         user: userReducer,
-        task: taskReducer,
         deck: deckReducer,
         card: cardReducer,
     },

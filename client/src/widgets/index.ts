@@ -1,6 +1,4 @@
+export { NavBarTop } from "./Navbar";
 export { Footer } from "./Footer";
-export { Navbar } from "./Navbar";
-export { TaskList } from "./TaskList";
-export { TaskUpdateForm } from "./TaskUpdateForm";
-export { TaskForm } from "./TaskForm";
 export { GameDesk } from "./GameDesk/GameDesk";
+
