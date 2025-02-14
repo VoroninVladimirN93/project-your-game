@@ -1,45 +1,54 @@
 import { CardItem } from "@/entities/card/ui/CardItem";
 import React, { useEffect, useState } from "react";
 import { Modal } from "antd";
+import { DeckType } from "../model/types";
+import { CardType } from "@/entities/card";
 
-export function DeckItem({ deck }): React.JSX.Element {
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [currentCard, setCurrentCard] = useState({});
-    const [score, setScore] = useState(0);
-    console.log(deck.Cards.length);
-    const [card,setCard]=useState([])
+type Props ={
+    deck:DeckType
+}
+
+export function DeckItem({ deck }:Props
+): React.JSX.Element {
+    const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+    const [currentCard, setCurrentCard] = useState<CardType|null>(null);
+    const [score, setScore] = useState<number>(0);
+    const [sortedCard,setSortedCard]=useState<Array<CardType>>([])
+    const [userAnswer, setUserAnswer] = useState<string>("")
     
 useEffect(() => {
-    if(deck.Cards.length > 0){const card = deck.Cards.toSorted((a,b)=> a.points - b.points)
-        setCard(card);
+    if(deck.Cards.length > 0){const card = deck.Cards.slice().sort((a:CardType,b:CardType)=> a.points - b.points)
+        setSortedCard(card);
     }
 }, [deck]);
 
 
 
-    const handleCardClick = (card) => {
+    const handleCardClick = (card:CardType) => {
         setCurrentCard(card);
         setIsModalVisible(true);
     };
 
-    const handleAnswerSubmit = (userAnswer) => {
-        if (userAnswer.toLowerCase() === currentCard.answer.toLowerCase()) {
+    const handleAnswerSubmit = () => {
+        if (currentCard && userAnswer.toLowerCase() === currentCard.answer.toLowerCase()) {
             setScore((prevScore) => prevScore + currentCard.points);
-        } else {
+        } else if (currentCard) {
             setScore((prevScore) => prevScore - currentCard.points);
         }
         setIsModalVisible(false);
+        setUserAnswer("");
     };
 
     const handleCancel = () => {
         setIsModalVisible(false);
+        setUserAnswer("");
     };
 
     return (
         <div className="deck-item">
             <h2>{deck.title}</h2>
             <div className="card-container">
-                {card.map((card) => (
+                {sortedCard.map((card) => (
                     <CardItem
                         key={card.id}
                         card={card}
@@ -54,7 +63,7 @@ useEffect(() => {
                 onCancel={handleCancel}
                 footer={null}
             >
-                <div>
+               {currentCard && ( <div>
                     <h3>{currentCard.question}</h3>
                     {currentCard.urlImage ? (
                         <img src={currentCard.urlImage} alt="question-image" />
@@ -64,20 +73,18 @@ useEffect(() => {
                     <input
                         type="text"
                         placeholder="Ваш ответ"
-                        onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                                handleAnswerSubmit(e.target.value);
+                        value={userAnswer}
+                        onChange={(event) => setUserAnswer(event.target.value)}
+                        onKeyDown={(event) => {
+                            if (event.key === "Enter") {
+                                handleAnswerSubmit();
                             }
                         }}
                     />
-                    <button
-                        onClick={() =>
-                            handleAnswerSubmit(document.querySelector("input").value)
-                        }
-                    >
+                    <button onClick={handleAnswerSubmit}>
                         Подтвердить
                     </button>
-                </div>
+                </div>)}
             </Modal>
             <div>Очки: {score}</div>
         </div>

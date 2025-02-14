@@ -5,6 +5,7 @@ export type RawCardType = {
 }
 
 export type CardType = {
+    id: number | null | undefined
     question: string
     answer: string
     deckId: number
