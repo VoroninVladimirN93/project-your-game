@@ -1,10 +1,9 @@
-import {  useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/reduxHooks"
 import { logoutThunk } from "@/entities/user/api/userThunkApi"
-import { Nav ,Navbar, Container, NavbarBrand} from "react-bootstrap"
+import { Nav, Navbar, Container, NavbarBrand } from "react-bootstrap"
 import { CLIENT_ROUTES } from "@/shared/enums/clientRoutes"
 import styles from "./NavBarTop.module.css"
-
 
 export function NavBarTop(): React.JSX.Element {
     const dispatch = useAppDispatch()
@@ -30,28 +29,48 @@ export function NavBarTop(): React.JSX.Element {
     }
 
     return (
-   
+        <Navbar bg="dark" data-bs-theme="dark" className="">
+            <Container>
+                <NavbarBrand
+                    className={styles.customBrand}
+                    onClick={() => navigate(CLIENT_ROUTES.HOME)}
+                >
+                    Своя игра
+                </NavbarBrand>
 
-
-        <Navbar bg="dark" data-bs-theme="dark" className=''>
-        <Container>
-          <NavbarBrand className={styles.customBrand} onClick={() => navigate(CLIENT_ROUTES.HOME)}>
-            Своя игра
-          </NavbarBrand>
-      
-          <Nav className="ms-auto">
-            {user && <Nav.Link onClick={() => navigate(CLIENT_ROUTES.PROFILE)} className={styles.customNavLink}>Личный кабинет</Nav.Link>}
-            {user && <Nav.Link onClick={() => navigate(CLIENT_ROUTES.GAME)} className={styles.customNavLink}>Игра</Nav.Link>}
-            {!user && (
-              <>
-                <Nav.Link onClick={() => navigate(CLIENT_ROUTES.AUTHORIZATION)} className={styles.customNavLink}>Авторизация</Nav.Link>
-                <Nav.Link onClick={() => navigate(CLIENT_ROUTES.REGISTRATION)} className={styles.customNavLink}>Регистрация</Nav.Link>
-              </>
-            )}
-            {user && (
-              <Nav.Link onClick={signOutHandler} className={styles.customNavLink}>Logout</Nav.Link>
-            )}
-          </Nav>
-        </Container>
-      </Navbar>
-)}
+                <Nav className="ms-auto">
+                    {user && (
+                        <Nav.Link
+                            onClick={() => navigate(CLIENT_ROUTES.PROFILE)}
+                            className={styles.customNavLink}
+                        >
+                            Личный кабинет
+                        </Nav.Link>
+                    )}
+                    {user && (
+                        <Nav.Link
+                            onClick={() => navigate(CLIENT_ROUTES.GAME)}
+                            className={styles.customNavLink}
+                        >
+                            Игра
+                        </Nav.Link>
+                    )}
+                    {!user && (
+                        <>
+                            {/* <Nav.Link onClick={() => navigate(CLIENT_ROUTES.AUTHORIZATION)} className={styles.customNavLink}>Авторизация</Nav.Link>
+                <Nav.Link onClick={() => navigate(CLIENT_ROUTES.REGISTRATION)} className={styles.customNavLink}>Регистрация</Nav.Link> */}
+                        </>
+                    )}
+                    {user && (
+                        <Nav.Link
+                            onClick={signOutHandler}
+                            className={styles.customNavLink}
+                        >
+                            Logout
+                        </Nav.Link>
+                    )}
+                </Nav>
+            </Container>
+        </Navbar>
+    )
+}
