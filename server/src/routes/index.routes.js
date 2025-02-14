@@ -1,11 +1,13 @@
 const router = require("express").Router();
 const authRoutes = require("./user.routes");
+const gameRoutes = require("./game.routes");
 const deckRoutes = require("./deck.routes");
 const cardRoutes = require("./card.routes");
 const formatResponse = require("../utils/formatResponse");
 
 router
   .use("/auth", authRoutes)
+  .use("/info", gameRoutes)
   .use("/decks", deckRoutes)
   .use("/cards", cardRoutes);
 

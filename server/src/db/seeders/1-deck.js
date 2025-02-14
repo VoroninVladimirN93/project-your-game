@@ -5,9 +5,12 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await Deck.bulkCreate([
       {
-       id:1,  title: " Кино и мультфильмы",
+        id: 1,
+        title: " Кино",
       },
-      { id:2, title: " Музыка" },
+      { id: 2, title: " Музыка" },
+      { id: 3, title: " Мультфильмы" },
+      { id: 4, title: " Сериалы" },
     ]);
   },
 
