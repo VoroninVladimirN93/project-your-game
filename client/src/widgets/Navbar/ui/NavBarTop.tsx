@@ -10,11 +10,7 @@ export function NavBarTop(): React.JSX.Element {
     const user = useAppSelector((state) => state.user.user)
 
     const navigate = useNavigate()
-    // const signOutHandler = async () => {
-    //   await UserApi.signOut();
-    //   setUser(null);
-    //   navigate("/signin");
-    // };
+  
 
     const signOutHandler = async (): Promise<void> => {
         try {
