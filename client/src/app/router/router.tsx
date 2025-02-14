@@ -6,7 +6,6 @@ import { Layout } from "../Layout/Layout"
 import { PublicGuard } from "@/shared/hocs/PublicGuard"
 import { AuthGuard } from "@/shared/hocs/AuthGuard"
 
-
 export const router = createBrowserRouter([
     {
         path: CLIENT_ROUTES.HOME,

@@ -7,7 +7,7 @@ const formatResponse = require("../utils/formatResponse");
 
 router
   .use("/auth", authRoutes)
-  .use("/info", gameRoutes)
+  .use("/profile", gameRoutes)
   .use("/decks", deckRoutes)
   .use("/cards", cardRoutes);
 
