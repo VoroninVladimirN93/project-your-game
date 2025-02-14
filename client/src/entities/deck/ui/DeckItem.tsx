@@ -20,16 +20,20 @@ useEffect(() => {
     const handleCardClick = (card) => {
         setCurrentCard(card);
         setIsModalVisible(true);
+        
     };
 
     const handleAnswerSubmit = (userAnswer) => {
+        console.log(userAnswer);
         if (userAnswer.toLowerCase() === currentCard.answer.toLowerCase()) {
+           
+            
             setScore((prevScore) => prevScore + currentCard.points);
         } else {
             setScore((prevScore) => prevScore - currentCard.points);
         }
         setIsModalVisible(false);
-        
+
     };
 
     const handleCancel = () => {

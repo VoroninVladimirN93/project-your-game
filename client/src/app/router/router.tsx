@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { CLIENT_ROUTES } from "@/shared/enums/clientRoutes";
 import { SignUpPage, SignInPage, MainPage, ErrorPage, GamePage } from "@/pages";
 import { Layout } from "../Layout/Layout";
+import GamePageMemo from "@/pages/GamePage/ui/GamePage";
 
 export const router = createBrowserRouter([
   {

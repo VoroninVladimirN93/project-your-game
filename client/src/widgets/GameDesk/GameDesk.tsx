@@ -59,3 +59,6 @@ export function GameDesk(): React.JSX.Element {
         </div>
     );
 }
+
+const GameDeskMemo = React.memo(GameDesk)
+export default GameDeskMemo
