@@ -3,6 +3,7 @@
 import { taskReducer } from "@/entities/task"
 import { userReducer } from "@/entities/user"
 import { deckReducer } from "@/entities/deck/slice/slice"
+import { cardReducer } from "@/entities/card/slice/slice"
 // Импортируем функцию configureStore из Redux Toolkit
 import { configureStore } from "@reduxjs/toolkit"
 
@@ -17,6 +18,7 @@ const store = configureStore({
         user: userReducer,
         task: taskReducer,
         deck: deckReducer,
+        card: cardReducer,
     },
 })
 

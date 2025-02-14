@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { DeckType, ArrayDeckType } from "../model/types"
-import { getAllBooksThunk, getBookByIdThunk } from "../api/deckThunkApi"
+import { getAllDecksThunk, getDeckByIdThunk } from "../api/deckThunkApi"
 
 type DeckStateType = {
     decks: ArrayDeckType | []
@@ -22,30 +22,30 @@ const useSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            // getAllBooksThunk
-            .addCase(getAllBooksThunk.pending, (state) => {
+            // getAllDecksThunk
+            .addCase(getAllDecksThunk.pending, (state) => {
                 state.loading = true
             })
-            .addCase(getAllBooksThunk.fulfilled, (state, action) => {
+            .addCase(getAllDecksThunk.fulfilled, (state, action) => {
                 state.decks = action.payload.data
                 state.error = null
                 state.loading = false
             })
-            .addCase(getAllBooksThunk.rejected, (state, action) => {
+            .addCase(getAllDecksThunk.rejected, (state, action) => {
                 state.decks = []
                 state.error = action.payload!.data
                 state.loading = false
             })
-            //getBookByIdThunk
-            .addCase(getBookByIdThunk.pending, (state) => {
+            //getDeckByIdThunk
+            .addCase(getDeckByIdThunk.pending, (state) => {
                 state.loading = true
             })
-            .addCase(getBookByIdThunk.fulfilled, (state, action) => {
+            .addCase(getDeckByIdThunk.fulfilled, (state, action) => {
                 state.oneDeck = action.payload.data
                 state.error = null
                 state.loading = false
             })
-            .addCase(getBookByIdThunk.rejected, (state, action) => {
+            .addCase(getDeckByIdThunk.rejected, (state, action) => {
                 state.oneDeck = null
                 state.error = action.payload!.error
                 state.loading = false

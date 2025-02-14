@@ -1,18 +1,18 @@
 import { axiosInstance } from "@/shared/lib/axiosInstance"
 import { ApiResponseSuccess, ApiResponseReject } from "@/shared/types/index"
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { DeckType, ArrayDeckType } from "../model/types"
+import { CardType, ArrayCardType } from "../model/types"
 import { AxiosError } from "axios"
 
-export const getAllDecksThunk = createAsyncThunk<
-    ApiResponseSuccess<ArrayDeckType>,
+export const getAllCardsThunk = createAsyncThunk<
+    ApiResponseSuccess<ArrayCardType>,
     void,
     { rejectValue: ApiResponseReject }
->("getAllDeck", async (_, { rejectWithValue }) => {
+>("getAllCards", async (_, { rejectWithValue }) => {
     try {
         const { data } = await axiosInstance.get<
-            ApiResponseSuccess<ArrayDeckType>
-        >("/decks")
+            ApiResponseSuccess<ArrayCardType>
+        >("/cards")
         return data
     } catch (error) {
         const err = error as AxiosError<ApiResponseReject>
@@ -20,14 +20,14 @@ export const getAllDecksThunk = createAsyncThunk<
     }
 })
 
-export const getDeckByIdThunk = createAsyncThunk<
-    ApiResponseSuccess<DeckType>,
+export const getCardByIdThunk = createAsyncThunk<
+    ApiResponseSuccess<CardType>,
     number,
     { rejectValue: ApiResponseReject }
->("getOneDeckByID", async (id, { rejectWithValue }) => {
+>("getOneCardByID", async (id, { rejectWithValue }) => {
     try {
-        const { data } = await axiosInstance.get<ApiResponseSuccess<DeckType>>(
-            `/decks/${id}`,
+        const { data } = await axiosInstance.get<ApiResponseSuccess<CardType>>(
+            `/cards/${id}`,
         )
         return data
     } catch (error) {
