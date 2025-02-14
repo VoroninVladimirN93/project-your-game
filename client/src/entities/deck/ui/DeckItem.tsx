@@ -2,10 +2,10 @@ import { CardItem } from "@/entities/card/ui/CardItem";
 import React, { useEffect, useState } from "react";
 import { Modal } from "antd";
 
-export function DeckItem({ deck }): React.JSX.Element {
+export function DeckItem({ deck,setScore }): React.JSX.Element {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [currentCard, setCurrentCard] = useState({});
-    const [score, setScore] = useState(0);
+    
     console.log(deck.Cards.length);
     const [card,setCard]=useState([])
     
@@ -29,24 +29,45 @@ useEffect(() => {
             setScore((prevScore) => prevScore - currentCard.points);
         }
         setIsModalVisible(false);
+        
     };
 
     const handleCancel = () => {
         setIsModalVisible(false);
     };
 
-    return (
-        <div className="deck-item">
-            <h2>{deck.title}</h2>
-            <div className="card-container">
-                {card.map((card) => (
-                    <CardItem
-                        key={card.id}
-                        card={card}
-                        onCardClick={handleCardClick}
-                    />
-                ))}
-            </div>
+    return (<>
+   <div className="deck-item" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div 
+        style={{
+            padding: '10px 10px',
+            borderRadius: '8px',
+            fontWeight: 'bold',
+            fontSize: '30px',
+            marginRight: '10px',
+            display: 'flex',
+            alignItems: 'center',// Центрируем текст по вертикали
+           justifyContent: 'right',
+           flex: 0.8,
+        }}
+    > 
+    
+
+
+{deck.title}
+    </div>
+    <div className="card-container" style={{ display: 'flex', justifyContent: 'left' ,flex:1, }}>
+        {card.map((card) => (
+            <CardItem
+                key={card.id}
+                card={card}
+                onCardClick={handleCardClick}
+            />
+        ))}
+    </div>
+  
+</div>
+
 
             <Modal
                 title="Ответ на вопрос"
@@ -79,7 +100,8 @@ useEffect(() => {
                     </button>
                 </div>
             </Modal>
-            <div>Очки: {score}</div>
-        </div>
+          
+        
+        </>
     );
 }
