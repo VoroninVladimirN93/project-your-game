@@ -1,44 +1,41 @@
-import { Link } from "react-router-dom";
-import Button from "../../../shared/ui/Button/ButtonNoDiv";
-import styles from './MainPage.module.css';
+import { Container, Card, Col, Row,Button} from "react-bootstrap";
 import { useEffect } from "react";
 import { useAppSelector } from "@/shared/hooks/reduxHooks";
 
+import { useNavigate } from "react-router-dom";
+import { CLIENT_ROUTES } from "@/shared/enums/clientRoutes";
+
+
 export function MainPage(): JSX.Element {
   const user = useAppSelector((state) => state.user.user);
-
+  const navigate = useNavigate()
   useEffect(() => {
     document.title = 'Main Page'
 }, [])
 
   return (
-    <div>
-      <div className={styles.container}>
-        <div className={styles.block}>
-          <h1 className={styles.heading}>Привет, {user?.username || 'пользователь'}!</h1>
-        </div>
+    <Container className="d-flex justify-content-center align-items-center vh-100">
+    <Row className="w-100 justify-content-center">
+      <Col md={8} lg={6}>
+        <Card className="shadow-lg p-4 bg-light rounded-4 text-center">
+          <Card.Body>
+            <Card.Title className="display-5 fw-bold text-primary">
+              Привет, {user?.username || "пользователь"}!
+            </Card.Title>
+            <Card.Text className="lead mt-3">
+              {!user? 'Чтобы сыграть в игру, авторизируйся или зарегистрируйся!' :  'Нажми кнопку для начала игры'}
+              <br></br>
+              {user &&   
+              <Button   variant="primary" className="mt-3" 
+                onClick={() => navigate(CLIENT_ROUTES.GAME)}>Начать игру</Button>}
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </Col>
+    </Row>
+  </Container>
+  
 
-        <div className={styles.block}>
-          <p className={styles.textBlock}>
-            {"H.A.L.P! JS WAS HERE! NOW ONLY TS".split('').map((letter, index) => (
-              <span
-                key={index}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {letter}
-              </span>
-            ))}
-          </p>
-        </div>
-      </div>
-      
-      {user && (
-        <Link to="/tasks">
-          <Button className={styles.Btn} text="Перейти к задачам" color="green" type="button" />
-        </Link>
-      )}
-
-    </div>
   );
 }
 
