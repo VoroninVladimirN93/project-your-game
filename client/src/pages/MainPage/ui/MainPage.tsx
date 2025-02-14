@@ -4,6 +4,7 @@ import { useAppSelector } from "@/shared/hooks/reduxHooks";
 
 import { useNavigate } from "react-router-dom";
 import { CLIENT_ROUTES } from "@/shared/enums/clientRoutes";
+import AuthChoice from "@/widgets/AuthChoice/AuthChoice";
 
 
 export function MainPage(): JSX.Element {
@@ -25,6 +26,7 @@ export function MainPage(): JSX.Element {
             <Card.Text className="lead mt-3">
               {!user? 'Чтобы сыграть в игру, авторизируйся или зарегистрируйся!' :  'Нажми кнопку для начала игры'}
               <br></br>
+              {!user && <AuthChoice/>}
               {user &&   
               <Button   variant="primary" className="mt-3" 
                 onClick={() => navigate(CLIENT_ROUTES.GAME)}>Начать игру</Button>}

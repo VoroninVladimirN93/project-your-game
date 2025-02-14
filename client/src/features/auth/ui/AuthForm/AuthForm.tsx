@@ -141,9 +141,9 @@ export function AuthForm({ type }: Props): JSX.Element {
                         className={styles.input}
                     />
                 )}
-                <Button
+                <Button className={styles.btn}
                     disabled={loading}
-                    color="green"
+                    color="#6666FF"
                     type="submit"
                     text={type === "signup" ? "Регистрация" : "Авторизация"}
                 />
