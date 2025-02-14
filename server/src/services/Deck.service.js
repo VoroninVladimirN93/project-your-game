@@ -1,8 +1,8 @@
-const { Deck } = require("../db/models");
+const { Deck, Card } = require("../db/models");
 
 class DeckService {
   static async getAll() {
-    return await Deck.findAll();
+    return await Deck.findAll({ include: [{ model: Card }] });
   }
 }
 
