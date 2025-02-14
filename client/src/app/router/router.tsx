@@ -1,9 +1,11 @@
+// import GamePageMemo from "@/pages/GamePage/ui/GamePage";
 import { createBrowserRouter } from "react-router-dom"
 import { CLIENT_ROUTES } from "@/shared/enums/clientRoutes"
 import { SignUpPage, SignInPage, MainPage, ErrorPage, GamePage } from "@/pages"
 import { Layout } from "../Layout/Layout"
 import { PublicGuard } from "@/shared/hocs/PublicGuard"
 import { AuthGuard } from "@/shared/hocs/AuthGuard"
+
 
 export const router = createBrowserRouter([
     {
