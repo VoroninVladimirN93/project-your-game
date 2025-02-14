@@ -1,11 +1,13 @@
 const router = require("express").Router();
 const authRoutes = require("./user.routes");
-const taskRoutes = require("./task.routes");
+const deckRoutes = require("./deck.routes");
+const cardRoutes = require("./card.routes");
 const formatResponse = require("../utils/formatResponse");
 
 router
   .use("/auth", authRoutes)
-  .use("/tasks", taskRoutes)
+  .use("/decks", deckRoutes)
+  .use("/cards", cardRoutes);
 
 router.use("*", (req, res) => {
   res
