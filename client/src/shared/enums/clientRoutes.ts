@@ -5,6 +5,7 @@ export enum CLIENT_ROUTES {
     LOGOUT = "/logout",
     NOTFOUND = "*",
     GAME = "/game",
+    PROFILE = '/profile'
 }
 
 export enum N {

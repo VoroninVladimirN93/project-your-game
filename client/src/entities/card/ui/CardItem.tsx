@@ -1,7 +1,12 @@
 import React from "react";
 import './styles.css'
+import { CardType } from "../model/types";
 
-export function CardItem({ card, onCardClick }): React.JSX.Element {
+type Props ={
+    card: CardType
+    onCardClick: (card:CardType) => void
+}
+export function CardItem({ card, onCardClick }:Props): React.JSX.Element {
     return (
         <div className="card-item" onClick={() => onCardClick(card)}>
             <div className="question-text">{card.points}</div>
