@@ -1,9 +1,10 @@
 // src/app/store/store.ts
 // Импортируем редьюсер для пользователя из файла user.ts
-import { taskReducer } from "@/entities/task";
-import { userReducer } from "@/entities/user";
+import { taskReducer } from "@/entities/task"
+import { userReducer } from "@/entities/user"
+import { deckReducer } from "@/entities/deck/slice/slice"
 // Импортируем функцию configureStore из Redux Toolkit
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit"
 
 // Создаем хранилище с помощью configureStore
 // В параметрах передаем объект конфигурации
@@ -15,16 +16,17 @@ const store = configureStore({
     reducer: {
         user: userReducer,
         task: taskReducer,
-    }
-});
+        deck: deckReducer,
+    },
+})
 
 // Определяем тип состояния всего хранилища
 // Используем typeof для получения типа getState функции хранилища
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof store.getState>
 
 // Определяем тип диспатча для отправки действий
-export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = typeof store.dispatch
 
 // Экспортируем созданное хранилище как дефолтный экспорт
 // Теперь мы можем использовать это хранилище во всем приложении
-export default store;
+export default store
