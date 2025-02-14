@@ -1,0 +1,39 @@
+/* Основной стиль для Navbar */
+.navbarCustom {
+  background-color: #333; /* Темный фон для Navbar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для Navbar */
+  border-bottom: 2px solid #1e1e1e; /* Легкая граница */
+  color: #fff; /* Цвет текста по умолчанию для Navbar */
+}
+
+/* Кастомизация шрифта для названия */
+.customBrand {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; /* Жирное начертание */
+  font-size: 2.5rem; /* Увеличенный размер */
+  text-transform: uppercase; /* Преобразование текста в заглавные буквы */
+  letter-spacing: 2px; /* Немного увеличим межбуквенное расстояние для читаемости */
+  color: #fff; /* Белый цвет текста для контраста с темным фоном */
+  transition: all 0.3s ease; /* Плавный переход для эффектов */
+}
+
+/* Эффекты при наведении на название */
+.customBrand:hover {
+  color: #ffbf00 !important; /* Желтый акцент при наведении */
+  transform: scale(1.1); /* Увеличение размера при наведении */
+  cursor: pointer;
+}
+
+/* Кастомизация ссылок внутри Navbar */
+.customNavLink {
+  font-family: 'Verdana', sans-serif;
+  font-weight: 500;
+  color: #f8f9fa; /* Цвет ссылок белый по умолчанию */
+  transition: color 0.3s ease, transform 0.3s ease; /* Плавный переход */
+}
+
+/* Эффекты при наведении на ссылки */
+.customNavLink:hover {
+  color: #ffbf00; /* Желтый акцент при наведении */
+  transform: scale(1.1); /* Легкое увеличение при наведении */
+}
