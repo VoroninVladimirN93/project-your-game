@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { CLIENT_ROUTES } from "@/shared/enums/clientRoutes";
-import { SignUpPage, SignInPage, MainPage, ErrorPage } from "@/pages";
+import { SignUpPage, SignInPage, MainPage, ErrorPage, GamePage } from "@/pages";
 import { Layout } from "../Layout/Layout";
 
 export const router = createBrowserRouter([
@@ -23,6 +23,10 @@ export const router = createBrowserRouter([
       {
         path: CLIENT_ROUTES.NOTFOUND,
         element: <ErrorPage />,
+      },
+      {
+        path: CLIENT_ROUTES.GAME,
+        element: <GamePage />,
       },
     ],
   },

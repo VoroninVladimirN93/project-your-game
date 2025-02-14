@@ -1,16 +1,14 @@
 export enum CLIENT_ROUTES {
-    HOME = '/',
-    PROFILE = '/profile',
-    REGISTRATION = '/signup',
-    AUTHORIZATION = '/signin',
-    LOGOUT = '/logout',
-    TASKS = '/tasks',
-    NOTFOUND = '*',
-    GAME ='/game'
-};
+    HOME = "/",
+    REGISTRATION = "/signup",
+    AUTHORIZATION = "/signin",
+    LOGOUT = "/logout",
+    NOTFOUND = "*",
+    GAME = "/game",
+}
 
 export enum N {
     A,
     B,
-    C
+    C,
 }
