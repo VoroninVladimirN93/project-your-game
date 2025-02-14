@@ -19,7 +19,6 @@ export function Layout(): React.JSX.Element {
 
             <Outlet />
 
-            <Footer />
         </>
     )
 }
