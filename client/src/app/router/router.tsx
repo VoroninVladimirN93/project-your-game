@@ -1,4 +1,4 @@
-import GamePageMemo from "@/pages/GamePage/ui/GamePage";
+// import GamePageMemo from "@/pages/GamePage/ui/GamePage";
 import { createBrowserRouter } from "react-router-dom"
 import { CLIENT_ROUTES } from "@/shared/enums/clientRoutes"
 import { SignUpPage, SignInPage, MainPage, ErrorPage, GamePage } from "@/pages"

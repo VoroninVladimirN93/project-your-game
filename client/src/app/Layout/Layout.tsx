@@ -1,6 +1,5 @@
 import { refreshTokensThunk } from "@/entities/user/api/userThunkApi"
 import { useAppDispatch } from "@/shared/hooks/reduxHooks"
-import { Footer } from "@/widgets"
 import { NavBarTop } from "@/widgets/Navbar"
 
 import React, { useEffect } from "react"

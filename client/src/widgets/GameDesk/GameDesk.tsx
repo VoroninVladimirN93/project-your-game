@@ -1,10 +1,9 @@
 import { getAllDecksThunk } from "@/entities/deck";
 import { DeckItem } from "@/entities/deck/ui/DeckItem";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/reduxHooks";
-
 import { unwrapResult } from "@reduxjs/toolkit";
 import React, { useEffect, useState } from "react";
-import { Table, Button, Container, Row, Col, Alert } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 
 export function GameDesk(): React.JSX.Element {
     const [loading, setLoading] = useState<boolean>(false);

@@ -1,4 +1,4 @@
-import { GameDesk } from "@/widgets"
+// import { GameDesk } from "@/widgets"
 import GameDeskMemo from "@/widgets/GameDesk/GameDesk"
 import React from "react"
 

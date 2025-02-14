@@ -7,13 +7,13 @@ import { CardType } from "@/entities/card";
 
 type Props ={
     deck:DeckType
+    setScore:React.Dispatch<React.SetStateAction<number>>
 }
 
 export function DeckItem({ deck ,setScore}:Props
 ): React.JSX.Element {
     const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
     const [currentCard, setCurrentCard] = useState<CardType|null>(null);
-    const [score, setScore] = useState<number>(0);
     const [sortedCard,setSortedCard]=useState<Array<CardType>>([])
     const [userAnswer, setUserAnswer] = useState<string>("")
 
@@ -70,7 +70,7 @@ useEffect(() => {
 {deck.title}
     </div>
     <div className="card-container" style={{ display: 'flex', justifyContent: 'left' ,flex:1, }}>
-        {card.map((card) => (
+        {sortedCard.map((card) => (
             <CardItem
                 key={card.id}
                 card={card}
