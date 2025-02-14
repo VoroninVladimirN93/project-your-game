@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/shared/hooks/reduxHooks";
 import { unwrapResult } from "@reduxjs/toolkit";
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
-
+const DeckItemMemo = React.memo(DeckItem);
 export function GameDesk(): React.JSX.Element {
     const [loading, setLoading] = useState<boolean>(false);
     const dispatch = useAppDispatch();
@@ -47,7 +47,7 @@ export function GameDesk(): React.JSX.Element {
                         <Col>
                             <div className="decks-container">
                                 {decks.map((deck) => (
-                                    <DeckItem setScore={setScore} key={deck.id} deck={deck} />
+                                    <DeckItemMemo setScore={setScore} key={deck.id} deck={deck} />
                                 ))}
                             </div>
                         </Col>
